@@ -16,7 +16,6 @@ const targetPath = path.join(desktopDir, 'target_dir')
 //http://localhost:8000/createFile
 
 app.use("/createFile", async (req, res, next) => {
-
 var date_time = new Date();
 let hours = date_time.getHours();
 let minutes = date_time.getMinutes();
@@ -52,13 +51,13 @@ fs. existsSync(targetPath) ? console.log("target_dir exists") :
 //api to retrieve all files from the directory
 //http://localhost:8000/getFile
 
-app.use("/getFile", (re,res,next)=>
+app.use("/getFile", (re,res,next)=>{
 fs.readdir(targetPath,  (err, files) =>{
   if (err) {
       return console.log('Unable to scan directory:' + err);
   } 
   res.send(files);
-}); 
+});
 })
 
 app.listen(PORT, () =>{
