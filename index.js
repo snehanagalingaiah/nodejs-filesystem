@@ -8,9 +8,8 @@ const PORT = 8000;
 
 // accessing the desktop directory
 const homeDir = os.homedir(); // See: https://www.npmjs.com/package/os
-const desktopDir = `${homeDir}\\Desktop`;
-console.log(desktopDir);
-const targetPath = path.join(desktopDir, 'target_dir')
+console.log(homeDir);
+const targetPath = path.join(homeDir, 'target_dir')
 
 //api to create file containing current timestamp and file named as current date-time
 //http://localhost:8000/createFile
