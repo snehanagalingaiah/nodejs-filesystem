@@ -51,7 +51,8 @@ fs. existsSync(targetPath) ? console.log("target_dir exists") :
 app.use("/getFile", (re,res,next)=>{
 fs.readdir(targetPath,  (err, files) =>{
   if (err) {
-      return console.log('Unable to scan directory:' + err);
+       console.log('Unable to scan directory:' + err);
+       res.send("unable to get files")
   } 
   res.send(files);
 });
