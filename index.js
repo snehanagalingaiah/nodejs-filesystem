@@ -4,7 +4,7 @@ const path = require("path");
 const os = require('os');
 
 const app= express();
-const PORT = 2000;
+const PORT = 3005;
 
 // accessing the desktop directory
 const homeDir = os.homedir(); // See: https://www.npmjs.com/package/os
@@ -63,7 +63,7 @@ app.listen(PORT, () =>{
 
 //api to read contents of a particular file
 
-app.use("/getContents/:file", (re,res,next)=>{
+app.use("/getContents/:file", (req,res,next)=>{
 try {
   const data = fs.readFileSync(`${targetPath}/${req.params.file}`, 'utf8');
  res.send(data);
