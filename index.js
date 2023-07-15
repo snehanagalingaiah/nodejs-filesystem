@@ -57,9 +57,6 @@ fs.readdir(targetPath,  (err, files) =>{
 });
 })
 
-app.listen(PORT, () =>{
-  console.log("Sever listening on port", PORT);
-});
 
 //api to read contents of a particular file
 
