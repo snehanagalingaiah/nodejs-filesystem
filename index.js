@@ -4,7 +4,7 @@ const path = require("path");
 const os = require('os');
 
 const app= express();
-const PORT = 8000;
+const PORT = 2000;
 
 // accessing the desktop directory
 const homeDir = os.homedir(); // See: https://www.npmjs.com/package/os
