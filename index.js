@@ -12,7 +12,6 @@ console.log(homeDir);
 const targetPath = path.join(homeDir, 'target_dir')
 
 //api to create file containing current timestamp and file named as current date-time
-//http://localhost:8000/createFile
 
 app.use("/createFile", async (req, res, next) => {
 var date_time = new Date();
@@ -48,7 +47,6 @@ fs. existsSync(targetPath) ? console.log("target_dir exists") :
 
 
 //api to retrieve all files from the directory
-//http://localhost:8000/getFile
 
 app.use("/getFile", (re,res,next)=>{
 fs.readdir(targetPath,  (err, files) =>{
@@ -57,6 +55,21 @@ fs.readdir(targetPath,  (err, files) =>{
   } 
   res.send(files);
 });
+})
+
+app.listen(PORT, () =>{
+  console.log("Sever listening on port", PORT);
+});
+
+//api to read contents of a particular file
+
+app.use("/getContents/:file", (re,res,next)=>{
+try {
+  const data = fs.readFileSync(`${targetPath}/${req.params.file}`, 'utf8');
+ res.send(data);
+} catch (err) {
+  res.send("unable to read file, make sure the file exists by hitting the getFile api")
+}
 })
 
 app.listen(PORT, () =>{
